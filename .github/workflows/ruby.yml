@@ -33,16 +33,9 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: Test Fail
-      id: fail_step
-      run: exit 1
-
-    - name: Rerun if fail_step failed
-      id: green_step
-      if: failure() && steps.fail_step.outcome == 'failure'
       run: |
+        ls hoge
         echo "hoge"
-        exit 0
-
-    - name: conclusion
-      if: steps.green_step.outcome == 'success'
-      run: exit 0
+    # - name: Rerun if fail_step failed
+    #   run: |
+    #     ls hoge
