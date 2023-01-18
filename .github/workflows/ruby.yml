@@ -29,11 +29,10 @@ jobs:
     - name: Set up Ruby
       uses: ruby/setup-ruby@ee2113536afb7f793eed4ce60e8d3b26db912da4 # v1.127.0
       with:
-
-    - name: Test Fail
-      run: bundle install
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
 
     - name: Test Fail
       run: |
-        rspec rspec_pra/spec/hello_spec.rb --failure-exit-code 0
-        echo "hoge"
+        bundle exec rspec rspec_pra/spec/hello_spec.rb --failure-exit-code 0
+        echo "go"
