@@ -36,8 +36,7 @@ jobs:
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Test Fail
       id: fail_step
-        run: |
-          exit 1
+        run: exit 1
       # Runs a set of commands using the runners shell
       - name: Rerun if fail_step failed
         if: failure() && steps.fail_step.outcome == 'failure'
