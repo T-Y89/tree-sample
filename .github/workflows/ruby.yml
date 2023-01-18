@@ -37,7 +37,12 @@ jobs:
       run: exit 1
 
     - name: Rerun if fail_step failed
+      id: green_step
       if: failure() && steps.fail_step.outcome == 'failure'
       run: |
         echo "hoge"
         exit 0
+
+    - name: conclusion
+      if: steps.green_step.outcome == 'success'
+      run: exit 0
