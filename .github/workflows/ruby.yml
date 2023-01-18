@@ -35,8 +35,10 @@ jobs:
         ruby-version: ${{ matrix.ruby-version }}
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
     - name: Test Fail
+      id: fail_step
         run: |
-          exit 1 # rspec ./spec
+          exit 1
       # Runs a set of commands using the runners shell
-      - name: Re test
-        run: exit 0 
+      - name: Rerun if fail_step failed
+        if: failure() && steps.fail_step.outcome == 'failure'
+        run: exit 0
