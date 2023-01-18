@@ -34,6 +34,7 @@ jobs:
 
     - name: Test Fail
       id: fail_step
+      continue-on-error: true
       run: exit 1
 
     - name: Rerun if fail_step failed
