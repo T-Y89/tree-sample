@@ -34,8 +34,5 @@ jobs:
 
     - name: Test Fail
       run: |
-        ls hoge
+        rspec rspec_pra/spec/hello_spec.rb --failure-exit-code 0
         echo "hoge"
-    # - name: Rerun if fail_step failed
-    #   run: |
-    #     ls hoge
